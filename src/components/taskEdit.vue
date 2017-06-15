@@ -394,14 +394,14 @@ export default {
       return false;
     },
     closeTaskEditDialog(){
-       //this.$refs['taskEditForm'].resetFields();
+      //this.$refs['taskEditForm'].resetFields();
     },
     formatTaskData(){
       var vm=this;
       var isFormValid=true;
       // this.$refs['taskEditForm'].validate((valid) => {
       //      isFormValid=valid;
-      //   });
+      // });
       if(!vm.taskModel.Title){
         this.$alert('请填写标题！','表单验证',{confirmButtonText:'确定'});
         return false;
@@ -480,7 +480,7 @@ export default {
     },
   },
   watch: {
-    taskModel: {
+    taskModel:{
       handler(newValue, oldValue) {
         var vm=this;
         if (this.$refs.taskEditForm) {
