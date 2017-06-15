@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <title>综合看板</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    window.projectId=GetQueryString("projectId");
+    function GetQueryString(name) {
+           var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+           var r = window.location.search.substr(1).match(reg);
+           if (r != null) return unescape(r[2]); return null;
+    }
+  </script>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+/*dialog*/
+div.el-dialog--small{
+    min-width: 698px;
+}
+div.el-dialog__body{
+    padding: 10px 20px;
+}
+div.el-dialog__header {
+    padding: 20px 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0,.1);
+}
+div.el-dialog__footer {
+    padding: 10px 20px 15px;
+    text-align: right;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(0, 0, 0,.1);
+}
+/*dialog*/
+/*group-tree*/
+.group-tree-filter-filed-ct>div.el-input>input.el-input__inner{
+  border: 0 none !important;
+}
+div.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content{
+  background-color: #e87352;
+  color: white;
+  border-radius:5px;
+}
+.self-render-tree-label{
+  font-size: 14px;
+}
+/*group-tree*/
+/*popover*/
+div.el-tree{
+  border: none;
+}
+div.el-popover{
+  padding: 0;
+}
+/*popover*/
+/*loading mask*/
+div.el-loading-mask{
+  background-color: rgba(0, 0, 0, .7);
+}
+/*loading mask*/

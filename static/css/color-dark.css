@@ -1,0 +1,66 @@
+.backlog-title-color{
+    color: gold;
+}
+.selected-member{
+    color: goldenrod;
+}
+.expanded-task-type-color{
+    color: #1eb1dd;
+}
+.backlog-info-ct-bg {
+    background: rgba(1,86,127,1);
+    box-shadow: inset 1px 1px 35px cadetblue, 2px 2px 25px rgba(0,0,0,.7);
+}
+.sprint-info-ct-bg{
+    box-shadow: inset 1px 1px 35px grey, 2px 2px 25px rgba(0,0,0,.7);
+}
+.task-info-ct-bg {
+    /*background: rgba(86, 80, 80, 0.51);*/
+    box-shadow: inset 1px 1px 35px rgba(255,255,255,.2), 2px 2px 25px rgba(0,0,0,.7);
+}
+.task-info-ct-border-todo {
+    border-top: 3px solid rgba(206, 83, 83, 0.85);
+}
+.task-info-ct-border-doing {
+    border-top: 3px solid rgba(61, 224, 217, 0.85);
+}
+.task-info-ct-border-done {
+    border-top: 3px solid  rgba(243, 139, 10, 0.85);
+}
+.task-info-ct-border-todo:hover {
+    background : rgba(206, 83, 83, 0.55);
+}
+.task-info-ct-border-doing:hover {
+    background: rgba(61, 224, 217, 0.55);
+}
+.task-info-ct-border-done:hover {
+    background:  rgba(243, 139, 10, .55);;
+}
+.task-info-ct-border-doing:hover>span.task-day-num-color{
+  color:rgba(255,255,255,1);
+}
+div.task-info-ct-selected-todo {
+    background:  rgba(206, 83, 83, 0.85);
+}
+.task-info-ct-selected-doing {
+    background: rgba(61, 224, 217, 0.82);
+}
+.task-info-ct-selected-done {
+    background: #f38b0a;
+
+}
+  .task-info-ct-selected-todo>div,.task-info-ct-selected-doing>div,.task-info-ct-selected-done>div{
+ color: white !important;
+}
+.expanded-top-content-border-color{
+    border-bottom-color:rgba(158, 145, 145, 0.1);
+}
+.task-title-color{
+    color:rgba(245, 222, 179, .8);
+}
+.task-day-num-color{
+    color:rgb(55, 194, 188);
+}
+.display-name-color {
+    color: #1db2dc;
+}

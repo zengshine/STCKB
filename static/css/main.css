@@ -1,0 +1,505 @@
+*{margin:0;padding:0;}
+html,body,#app{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+body{
+    font-family: "microsoft yahei", arial, sans-serif;
+     background:url(../img/stckanbanBG.png);
+}
+/*home style*/
+.self-border-all{
+     border: 1px dashed rgba(255, 255, 255, .1);
+}
+.self-border-top{
+     border-top: 1px dashed rgba(255, 255, 255, .05);
+}
+.self-border-right{
+     border-right: 1px dashed rgba(255, 255, 255, .05);
+}
+.self-border-bottom{
+     border-bottom: 1px dashed rgba(255, 255, 255, .05);
+}
+.self-border-left{
+     border-left: 1px dashed rgba(255, 255, 255, .05);
+}
+
+.self-border-shadow{
+     box-shadow:0 0 2px rgba(255, 255, 255, .5)
+}
+.self-border-top-solid{
+     border-top: 1px solid rgba(255, 255, 255, .1);
+}
+.self-border-right-solid{
+     border-right: 1px solid rgba(255, 255, 255, .1);;
+}
+.self-border-bottom-solid{
+     border-bottom: 1px solid rgba(255, 255, 255, .1);;
+}
+.self-border-left-solid{
+     border-left: 1px solid rgba(255, 255, 255, .1);;
+}
+
+/*header.vue*/
+.project-title{
+    height: 75px;
+    line-height: 75px;
+}
+.display-name {
+    margin-left: 50px;
+    font-size: 28px;
+}
+.page-content {
+    position: absolute;
+    top: 138px;
+    bottom: 0px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+.member-label-ct{
+   position: absolute;
+   left: 215px;
+}
+.member-label {
+    padding: 0px 10px;
+    line-height: 32px;
+    border-radius: 5px;
+    font-weight: normal;
+    background:rgba(255, 255, 255, .05);
+}
+.filter-container{
+    position: relative;
+    z-index: 5;
+    line-height: 64px;
+    background: rgba(34, 34, 34, 0.95);
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.6);
+        transition: all .75s;
+}
+.filter-container-folded{
+    height: 64px;
+    overflow: hidden;
+    background: none;
+    box-shadow: none;
+    line-height: 64px;
+    transition: all .75s;
+}
+.member-filter {
+    position: relative;
+    margin-left: 290px;
+    margin-right: 35px;
+}
+.sprint-filter {
+    position: absolute;
+    left: 10px;
+}
+.member-list {
+    color: rgba(255, 255, 255, .7);
+    display: inline-block;
+}
+.expanded-tasktype-arrow{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.memberlist-expand-btn {
+    position: absolute;
+    top: 22px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.fold-task-arrow-btn{
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+}
+.fold-task-arrow-btn:hover{
+    color: gold;
+}
+.fold-task-arrow-up{
+    transform: rotate(-90deg);
+}
+.fold-task-arrow-down{
+    transform: rotate(90deg);
+}
+.task-day-num{
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.add-new-class-ct{
+    border: 1px dotted #333333;
+    text-align: center;
+    line-height: 14px;
+    color: #333333;
+    cursor: pointer !important;
+    background: rgba(0,0,0,.1);
+}
+
+.add-new-class-ct:hover{
+   background: gray;
+}
+
+.add-new-class-ct i{
+    font-size: 10px;
+    margin-right:5px;
+}
+.task-stage-contents-ct{
+  padding-top: 15px;
+}
+.task-type-nav-ct{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.page-define-btn{
+    display: inline-block;
+    margin-right: 8px;
+    float:right;
+}
+.page-define-btn i{
+   margin: 0 5px;
+   font-size: 18px;
+}
+    div.sprint-filter div.el-input{
+       width: 170px !important;
+    }
+    .sprint-filter input.el-input__inner{
+       padding-left:60px;
+       background: rgba(255, 255, 255, .0);
+       color: rgba(255, 255, 255, 1);
+       height: 32px;
+       border: 1px solid rgba(255, 255, 255, .3);
+    }
+    .vertical-ct{
+    position: absolute;
+    top: 50px;
+    bottom: 0px;
+    overflow-y: scroll
+    }
+    .bl-wrapper{
+      overflow-y:auto;
+    }
+    .task-state-change-btn{
+    position: absolute;
+    right: 10px;
+    top: 22px;
+    cursor: pointer;
+    color:rgba(255, 255, 255, .7);
+    }
+    .task-state-change-btn:hover{
+      color: white;
+    }
+
+.backlog-info-ct {
+    width: 200px;
+    border-radius: 5px;
+    margin: 30px 0px;
+    padding: 0 8px;
+}
+.sprint-info-ct{
+    width: 180px;
+    margin-left: 20px
+}
+
+.task-info-ct {
+    position: relative;
+    width: 175px;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 5px 25px 5px 4px;
+    cursor: move;
+}
+.task-title{
+    margin: 15px 0px;
+    padding-left:3px;
+    word-wrap: break-word;
+}
+.task-owner{
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, .5);
+}
+.task-info-ct:last-child {
+    margin-bottom: 15px;
+}
+
+.backlog-info-ct:last-child {
+
+}
+
+.wrapper {
+    color: white;
+}
+
+.header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.header .logo {
+    text-align: center;
+}
+
+
+.member-name {
+    padding: 5px 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 28px;
+}
+
+.member-selected {
+    color: gold;
+    background: rgba(0, 0, 0, .4);
+    border-radius: 10px;
+}
+
+.sprint-label {
+    position: absolute;
+    z-index: 5;
+    top: 1px;
+    left: 15px;
+}
+.expanded-task-type{
+    font-size: 20px;
+}
+
+/*头部导航*/
+.kb-nav-container-normal {
+    text-align: center;
+}
+
+.unexpanded-content {
+  line-height: 90px;
+  height: 100%;
+}
+.unexpanded-content:hover>.unexpand-arrow{
+  color: #1db2dc;
+}
+.unexpanded-content:hover>.collapse-taskstage-name{
+  color: rgba(29, 178, 220, .15);
+}
+.unexpand-arrow{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+    color:white;
+}
+.collapse-taskstage-name{
+    width: 30px;
+    font-size: 24px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .1);
+    position: absolute;
+    word-wrap: break-word;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.left-nav-ct-type{
+    font-size: 18px;
+    margin:10px 0px;
+}
+.left-nav-ct-type-collapse{
+    display: inline-block;
+    font-size: 18px;
+    margin: 20px 0px 0px 0px;
+}
+.left-nav-ct-name{
+    font-weight: bold;
+    font-size: 18px;
+    color: #fe8f00;
+    padding-left: 8px;
+    margin:10px 0px;
+}
+.left-nav-ct-name-collapse{
+    display: inline-block;
+    width: 75px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fe8f00;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 20px 0px 0px 0px;
+    vertical-align: bottom;
+    white-space: nowrap;
+}
+.left-nav-sprint-type{
+  font-size: 18px;
+  margin:10px 0px;
+}
+.left-nav-sprint-name{
+  font-size: 14px;
+  font-weight: bold;
+  color: #fe8f00;
+
+}
+.left-nav-sprint-type-collapse{
+  display: inline-block;
+   margin: 20px 0px 0px 0px;
+  font-size: 18px;
+}
+.left-nav-sprint-name-collapse{
+  display: inline-block;
+  width: 70px;
+  margin: 20px 0px 0px 0px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fe8f00;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 20px 0px 0px 0px;
+    vertical-align: bottom;
+    white-space: nowrap;
+}
+.backloglist-ct:nth-child(even){
+    background:rgba(255, 255, 255, .03);
+}
+.backloglist-ct-collapse{
+  cursor: pointer;
+}
+.sprintlist-ct-collapse{
+  cursor: pointer;
+}
+.backloglist-ct:nth-child(even).backloglist-ct-collapse{
+   box-shadow: inset 0px 0px 5px rgba(255,255,255,.2);
+}
+
+/*draggabel*/
+
+.flip-list-move {
+    transition: transform 0.5s;
+}
+
+.no-move {
+    transition: transform 0s;
+}
+
+.ghost {
+    opacity: .5;
+    background: #C8EBFB;
+}
+
+.list-group {
+    min-height: 20px;
+}
+
+.draggable-ct {
+   display: block;
+   min-width: 175px;
+   height: 100%;
+}
+
+.list-group-item {
+    cursor: move;
+}
+
+.list-group-item i {
+    cursor: pointer;
+}
+/*task edit dialog对话框*/
+.self-dialog-body{
+
+}
+.eidt-task-form{
+    height: 425px;
+    overflow: auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+.form-item-ct{
+    min-width: 50%;
+    line-height: 57px;
+    height: 57px;
+}
+.form-item-ct>div{
+    display: inline-block;
+
+}
+.form-item-name-ct{
+    width: 30%;
+}
+.form-item-content-ct{
+    width: 65%;
+}
+.form-item-content-ct div.el-input-number{
+    vertical-align: middle;
+    width: 200px;
+}
+.form-item-content-ct div.el-date-editor{
+    width: 200px;
+}
+.form-item-content-ct>label.radio{
+    display: inline-block;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    font-weight: normal;
+}
+.form-item-ct-full{
+    width: 100%;
+}
+.form-item-name-ct-full{
+    width: 15%;
+}
+.form-item-content-ct-full{
+    width:80.5%;
+}
+.task-edit-form-unvalid,.task-edit-form-unvalid:hover{
+  background: gray;
+  border: none;
+}
+.task-title-rule{
+  padding-left: 16%;
+  padding-right:3%;
+}
+.task-title-description{
+  text-decoration:underline;
+  cursor: help;
+}
+.task-title-rule-tooptip{
+  width: 350px;
+  padding: 8px 0px;
+  line-height: 20px
+}
+.rule-tooltip-suggestion{
+  color:  #ff7336;
+  margin-right:5px;
+}
+.task-title-evaluation{
+  display: inline-block;
+}
+.task-title-evaluation-result{
+  color:  #ff7336;
+  margin-right:5px;
+}
+.unrequired-field{
+  padding-left: 10px;
+}
+.required-field-tag{
+  color:red;
+}
+/*task edit dialog对话框*/
+
+/*project select dialog*/
+.project-select-body{
+    height: 375px;
+    overflow: auto;
+}
+/*draggabel*/
+/*element-ui 自定义样式*/
+.sprint-filter div.el-select{
+    padding-top:17px;
+}

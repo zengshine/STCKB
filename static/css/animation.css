@@ -1,0 +1,13 @@
+.flip-list-move{
+    transition: transform 1s;
+}
+.flip-item-leave-active{
+    transition: all .30s ease;
+}
+.flip-item-enter-active{
+     transition: all .35s;
+}
+.flip-item-enter,.flip-item-leave-active{
+    transform: translateY(30px);
+    opacity: 0;
+}
