@@ -1,5 +1,12 @@
 .flip-list-move{
-    transition: transform 1s;
+    transition: all 1s cubic-bezier;
+}
+.flip-list-leave-active,.flip-list-enter-active{
+   transition: all 1s ease;
+}
+.flip-list-enter,.flip-list-leave-active{
+   opacity: 0;
+   transform: translateY(30px);
 }
 .flip-item-leave-active{
     transition: all .30s ease;

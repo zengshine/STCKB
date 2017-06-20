@@ -35,7 +35,7 @@
     <div class="page-content" style="">
       <!--Task分类导航-->
       <div class="kb-nav-container kb-nav-container-normal stckb-task-satge-nav">
-        <div class="backlog-cloumn column-comon task-type-nav-ct self-border-bottom-solid self-border-right-solid self-border-top-solid task-stage-nav">
+        <div @click="onSortingBacklog()" class="backlog-cloumn column-comon task-type-nav-ct self-border-bottom-solid self-border-right-solid self-border-top-solid task-stage-nav">
           <div class="unexpanded-content">
             <span>PB</span>
           </div>
@@ -60,8 +60,9 @@
       <!--Task列表-->
 
       <div class="bl-wrapper">
-        <!--<draggable :options="computedDragOptions('BLWrapper','baclog')" :move="onMove" v-model="ProjectModal.BacklogList">-->
-        <div class="height-cal-ct">
+      <div class="height-cal-ct">
+      <draggable :options="computedDragOptions('BLWrapper','baclog')" :move="onMove"  @start="onVDragBLStart()" @end="onVDragBLEnd()" @update="onVDragBLUpdate()" v-model="ProjectModal.BacklogList">
+        <transition-group class="draggable-ct" type="transition" :name="'flip-list'">
         <div class="backloglist-ct" :class="[{'backloglist-ct-collapse':!backlog.expanded}]" v-for="backlog in ProjectModal.BacklogList" :key="backlog">
           <!--Backlog Task列表-->
           <div class="blitem-container" @click="toggleTaskExpanded(backlog,true,$event)">
@@ -195,8 +196,9 @@
             </div>
           </div>
         </div>
+         </transition-group>
+        </draggable>
         </div>
-        <!--</draggable>-->
       </div>
     </div>
     <vtaskedit></vtaskedit>
@@ -204,7 +206,6 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
 import { mapGetters, mapActions, mapMutations, mapState } from 'vuex'
 import draggable from 'vuedraggable'
 import vtaskedit from './taskEdit.vue'
@@ -231,7 +232,7 @@ export default {
       memberListExpanded: false,
       selectedMember: "ALL",
       selectedTaskID: "",
-      ptModalVisible: false,
+      isSortingBacklog:false,
       dragOptions: {
         animations: 0,
         group: 'DraggableTask',
@@ -549,6 +550,42 @@ export default {
       this.taskUpdateModel.oList = tasklist;
       this.taskUpdateModel.dragTaskStateId = stateId;
     },
+
+    onVDragBLStart(){
+      var vm=this;
+      vm.ProjectModal.BacklogList.forEach((item,index)=>{
+          //item.expanded=false;
+      });
+    },
+    onVDragBLEnd(){
+
+    },
+    onVDragBLUpdate(){
+      var vm=this,backlogIDList="";
+      var sortedList=[];
+      vm.ProjectModal.BacklogList.forEach((item,index)=>{
+         sortedList.push(item.BacklogID);
+      });
+      backlogIDList=sortedList.join(",");
+          vm.$axios.get('/api/backlog/?isSortBacklog=true&backlogIDListStr='+backlogIDList).then((res)=>{
+           if(res.data.StateCode==1){
+            vm.eleMessage(res.data.Message, 'warning');
+           }
+           vm.eleMessage("更新成功", 'warning');
+           vm.loadingData=false;
+           console.log(res.data);
+        },(error)=>{
+           console.log(error);
+        });
+    },
+    onSortingBacklog(){
+      //isSortingBacklog:默认false
+      var vm=this;
+      vm.ProjectModal.BacklogList.forEach((item,index)=>{
+          item.expanded=vm.isSortingBacklog;
+      });
+      vm.isSortingBacklog=!vm.isSortingBacklog;
+    },
     //恢复函数
     stateChangeRollBack() {
       var movedItem = this.taskUpdateModel.nList.splice(this.taskUpdateModel.nIndex, 1)[0];
@@ -848,7 +885,7 @@ export default {
         var result = res.data;
         if (result && result.StateCode == 0) {
           vueModel.ProjectModal = result.Data;
-          Vue.nextTick(function(){
+          vueModel.$nextTick(function(){
             vueModel.calTaskCTWidth();
           });
           vueModel.loadingData = false;

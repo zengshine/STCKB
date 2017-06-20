@@ -4,7 +4,7 @@
      <div class="group-select-form">
        <div class="group-select">
          <span>部门：</span>
-           <el-popover ref="popover1" v-model="groupTreeVisible" placement="bottom-start" width="300" trigger="click">
+           <el-popover ref="popoverGroupTree" v-model="groupTreeVisible" placement="bottom-start" width="300" trigger="click">
            <div class="group-tree-ct">
             <div class="group-tree-filter-filed-ct">
                 <el-input icon="search" placeholder="输入关键字进行过滤" v-model="filterText">
@@ -20,7 +20,7 @@
             </div>
            </div>
            </el-popover>
-          <el-button v-popover:popover1><span class="selected-group">{{selectedGroup.Name}}</span><i class="el-icon-caret-bottom self-dropdown-right-icon"></i></el-button>
+          <el-button v-popover:popoverGroupTree><span class="selected-group">{{selectedGroup.Name}}</span><i class="el-icon-caret-bottom self-dropdown-right-icon"></i></el-button>
          </div>
        <div class="year-select">
         <span>年份：</span>
@@ -214,7 +214,7 @@ export default {
       vm.$axios.get("/api/Project?isGetAllGroupProject=1&year=" + vm.selectedYear + "&GroupID=" + vm.selectedGroup.PK_ID).then((res) => {
       setTimeout(()=>{
         vm.loadingData=false;
-      },500);
+      },0);
       var result = res.data;
       if (result) {
         vm.projectData=result;
@@ -223,7 +223,7 @@ export default {
        console.log(error);
       setTimeout(()=>{
         vm.loadingData=false;
-      },500);
+      },0);
     });
   },
 

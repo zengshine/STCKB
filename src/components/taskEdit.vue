@@ -346,10 +346,10 @@ export default {
         if (vm.taskEdit.editModel == "edit"||vm.taskEdit.editModel == "derive") {
           //编辑Task(可能为派生类型)
           //vm.rules=vm.editRules;
-          vm.$axios.all([vm.loadsingleTask(), vm.loadBacklogList(), vm.loadBacklogSprints()]).then(
+          vm.$axios.all([vm.loadsingleTask(),vm.loadBacklogList(), vm.loadBacklogSprints()]).then(
             vm.$axios.spread((tRes, bRes, sRes) => {
               vm.loadingData=false;
-              if (tRes.data.StateCode == 0 && tRes.data.Data) {
+              if (tRes.data.StateCode == 0 && tRes.data.Data){
                 vm.taskModel = tRes.data.Data;
                 //如果FK_StageID不为空,派生类型，则赋值
                 if(this.taskEdit.FK_StageID){
@@ -370,7 +370,7 @@ export default {
                 vm.backlogSprints.unshift({Name:'--请选择Sprint-',PK_ID:null});
               }
             })
-          );
+          )
         }else if(vm.taskEdit.editModel == "add"){
              //新增Task
           //vm.rules=vm.addRules;

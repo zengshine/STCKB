@@ -200,6 +200,7 @@ body{
     border-radius: 5px;
     margin: 30px 0px;
     padding: 0 8px;
+    cursor:move;
 }
 .sprint-info-ct{
     width: 180px;

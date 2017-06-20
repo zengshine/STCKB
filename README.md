@@ -1,4 +1,4 @@
-# vue-tutorial-self
+# STCKB
 
 > A Vue.js project
 
