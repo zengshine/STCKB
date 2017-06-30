@@ -434,14 +434,17 @@ export default {
   created() {
     //先获取用户ID,项目ID,室组ID
     var vueModel = this;
+    vueModel.LS = this.commom.ls;
     vueModel.ProjectModal = {};
     vueModel.memberList = [];
-    vueModel.paramsData.ProjectId = window.projectId;
+    vueModel.paramsData.ProjectId = window.projectId||vueModel.LS.get("selectedProjectId");
     //选择了project
      this.$bus.$on('selectProject',()=>{
        this.loadSTCKBTasks(true);
        this.loadMemberList();
        this.projectSelect.projectselModalVisible=false;
+       //保存选中的projectId
+       vueModel.LS.set("selectedProjectId",vueModel.paramsData.ProjectId);
      });
      //更新letask
     this.$bus.$on('updateTask',(task)=>{
@@ -454,7 +457,6 @@ export default {
       vueModel.loadMemberList();
     }
     //读取localstorage的taskstage折叠状态
-    vueModel.LS = this.commom.ls;
     var taskTypeList = vueModel.LS.get("taskTypeList");
     if (taskTypeList) {
       //展开状态赋值
@@ -685,8 +687,9 @@ export default {
       });
       //判断是否存在竖向滚动条
       var isVerticalScroll=document.querySelector(".bl-wrapper").scrollHeight>document.querySelector(".bl-wrapper").clientHeight;
-      if ((totalW <= pageW + 2 || totalW == 640)&&isVerticalScroll) {
-        document.querySelector(".bl-wrapper").style.width = pageW + scrollBarWidth + 'px';
+      //(totalW <= pageW + 2 || totalW == 640)&&
+      if (isVerticalScroll) {
+        document.querySelector(".bl-wrapper").style.width = totalW + scrollBarWidth + 'px';
       } else {
         document.querySelector(".bl-wrapper").style.width = totalW + 'px';
       }

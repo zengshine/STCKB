@@ -1,10 +1,13 @@
 .flip-list-move{
     transition: all 1s cubic-bezier;
 }
-.flip-list-leave-active,.flip-list-enter-active{
+.flip-list-leave-active{
+   transition: all 0s ease;
+}
+.flip-list-enter-active{
    transition: all 1s ease;
 }
-.flip-list-enter,.flip-list-leave-active{
+.flip-list-enter{
    opacity: 0;
    transform: translateY(30px);
 }

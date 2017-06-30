@@ -133,16 +133,17 @@ body{
 }
 
 .add-new-class-ct{
-    border: 1px dotted #333333;
+    border: 1px dotted #555;
     text-align: center;
     line-height: 14px;
-    color: #333333;
+    color: #666;
     cursor: pointer !important;
-    background: rgba(0,0,0,.1);
+    background: rgba(51, 51, 51, .7);
 }
 
 .add-new-class-ct:hover{
    background: gray;
+   color:rgba(0,0,0,0.6);
 }
 
 .add-new-class-ct i{
@@ -160,6 +161,7 @@ body{
     display: inline-block;
     margin-right: 8px;
     float:right;
+    cursor: pointer;
 }
 .page-define-btn i{
    margin: 0 5px;
@@ -300,7 +302,7 @@ body{
     width: 30px;
     font-size: 24px;
     line-height: 24px;
-    color: rgba(255, 255, 255, .1);
+    color: rgba(255, 255, 255, .2);
     position: absolute;
     word-wrap: break-word;
     left: 50%;
